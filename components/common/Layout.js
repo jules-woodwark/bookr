@@ -1,9 +1,8 @@
-// import { Fragment } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-// import Footer from './Footer';
-// import Header from './Header';
-// import Snackbar from './Snackbar';
+import Footer from './Footer';
+import Header from './Header';
+import Snackbar from '../ui/Snackbar';
 
 const StyledMain = styled(Box)`
   align-items: center;
@@ -17,19 +16,15 @@ const StyledMain = styled(Box)`
   max-width: 100%;
 `;
 
-// const Layout = (props: LayoutProps) => {
-//   return (
-//     <Fragment>
-//       <Header />
-//       <StyledMain component="main">{props.children}</StyledMain>
-//       <Footer />
-//       <Snackbar />
-//     </Fragment>
-//   );
-// };
-
 function Layout({ children }) {
-  return <StyledMain component="main">{children}</StyledMain>;
+  return (
+    <>
+      <Header />
+      <StyledMain component="main">{children}</StyledMain>
+      <Footer />
+      <Snackbar />
+    </>
+  );
 }
 
 export default Layout;

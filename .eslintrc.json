@@ -21,6 +21,7 @@
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/button-has-type": "off",
     "react/jsx-props-no-spreading": "off",
     "no-undef": "off",
     "no-shadow": "off",
