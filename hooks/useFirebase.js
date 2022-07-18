@@ -7,8 +7,8 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { db, colRef, auth } from '../firebase-config';
-import AuthContext from '../store/auth-context';
-import UiContext from '../store/ui-context';
+import { AuthContext } from '../store/auth-context';
+import { UiContext } from '../store/ui-context';
 import ValidationSchema from '../models/validationSchema';
 
 const useFirebase = () => {
@@ -33,9 +33,9 @@ const useFirebase = () => {
         const id = userCredentials.user.uid;
 
         await setDoc(doc(colRef, id), {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
+          firstName,
+          lastName,
+          email,
         });
 
         showAlert('success', 'Account Created Successfully!');
@@ -56,7 +56,7 @@ const useFirebase = () => {
   };
 
   const getUserInfo = useCallback(async () => {
-    const uid = authCtx.user.uid;
+    const { uid } = authCtx.user;
 
     if (uid) {
       const docRef = doc(db, 'users', uid);
@@ -70,13 +70,12 @@ const useFirebase = () => {
       }
     } else {
       showAlert('error', 'No User ID');
-      return;
     }
   }, [authCtx.user, showAlert]);
 
   const updateProfile = async (valuesObj) => {
     const { firstName, lastName, email } = valuesObj;
-    const uid = authCtx.user.uid;
+    const { uid } = authCtx.user;
 
     if (uid) {
       const docRef = doc(db, 'users', uid);
@@ -85,9 +84,9 @@ const useFirebase = () => {
       try {
         await updateAccountSchema.validate({ firstName, lastName, email });
         await updateDoc(docRef, {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
+          firstName,
+          lastName,
+          email,
         });
         setIsLoading(false);
         showAlert('success', 'Account Details Saved');
@@ -97,7 +96,6 @@ const useFirebase = () => {
       }
     } else {
       showAlert('error', 'No User ID');
-      return;
     }
   };
 
