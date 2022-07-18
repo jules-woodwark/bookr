@@ -3,12 +3,12 @@ import { getFirestore, collection } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDga3u2rVASg2nPj2QeZPMMcgBCOV7jYNg',
-  authDomain: 'material-ui-login.firebaseapp.com',
-  projectId: 'material-ui-login',
-  storageBucket: 'material-ui-login.appspot.com',
-  messagingSenderId: '1008755030568',
-  appId: '1:1008755030568:web:5bb3f324f5ba92930d931d',
+  apiKey: 'AIzaSyDkfEyAJ5m2dRz8gnzF0A0r_RmvSwZ7yec',
+  authDomain: 'bookr-5ebad.firebaseapp.com',
+  projectId: 'bookr-5ebad',
+  storageBucket: 'bookr-5ebad.appspot.com',
+  messagingSenderId: '861495615935',
+  appId: '1:861495615935:web:bc8a760cc480b69c53c10a',
 };
 
 //  init firebase app
