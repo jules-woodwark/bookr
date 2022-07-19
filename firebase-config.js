@@ -4,14 +4,13 @@ import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDkfEyAJ5m2dRz8gnzF0A0r_RmvSwZ7yec',
-  authDomain: 'bookr-5ebad.firebaseapp.com',
-  projectId: 'bookr-5ebad',
-  storageBucket: 'bookr-5ebad.appspot.com',
-  messagingSenderId: '861495615935',
-  appId: '1:861495615935:web:bc8a760cc480b69c53c10a',
-  databaseURL:
-    'https://bookr-5ebad-default-rtdb.europe-west1.firebasedatabase.app/',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
 //  init firebase app
