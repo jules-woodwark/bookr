@@ -27,9 +27,11 @@
     "no-shadow": "off",
     "import/extensions": "off",
     "import/order": "off",
+    "import/no-mutable-exports": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "consistent-return": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-use-before-define": "off"
   }
 }
