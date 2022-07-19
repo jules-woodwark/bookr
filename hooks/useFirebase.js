@@ -6,7 +6,8 @@ import {
   updatePassword,
 } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
-import { db, colRef, auth } from '../firebase-config';
+import { ref, onValue } from 'firebase/database';
+import { db, colRef, auth, database } from '../firebase-config';
 import { AuthContext } from '../store/auth-context';
 import { UiContext } from '../store/ui-context';
 import ValidationSchema from '../models/validationSchema';
@@ -53,6 +54,19 @@ const useFirebase = () => {
     } catch (err) {
       showAlert('error', 'Failed to Log Out', err);
     }
+  };
+
+  const getClubNodeData = (nodeName, clubName = 'grace') => {
+    const clubNodeRef = ref(database, `clubs/${clubName}/${nodeName}`);
+
+    onValue(
+      clubNodeRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        return data;
+      },
+      (err) => console.log(err)
+    );
   };
 
   const getUserInfo = useCallback(async () => {
@@ -123,6 +137,7 @@ const useFirebase = () => {
     getUserInfo,
     updateProfile,
     setNewPassword,
+    getClubNodeData,
   };
 };
 
