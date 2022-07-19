@@ -15,6 +15,7 @@ import ValidationSchema from '../models/validationSchema';
 const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [nodeData, setNodeData] = useState(null);
   const authCtx = useContext(AuthContext);
   const { showAlert } = useContext(UiContext);
   const { updateAccountSchema, updatePasswordSchema } = ValidationSchema;
@@ -57,16 +58,14 @@ const useFirebase = () => {
   };
 
   const getClubNodeData = (nodeName, clubName = 'grace') => {
+    setIsLoading(true);
     const clubNodeRef = ref(database, `clubs/${clubName}/${nodeName}`);
 
-    onValue(
-      clubNodeRef,
-      (snapshot) => {
-        const data = snapshot.val();
-        return data;
-      },
-      (err) => console.log(err)
-    );
+    onValue(clubNodeRef, (snapshot) => {
+      const data = snapshot.val();
+      setNodeData(data);
+      setIsLoading(false);
+    });
   };
 
   const getUserInfo = useCallback(async () => {
@@ -138,6 +137,7 @@ const useFirebase = () => {
     updateProfile,
     setNewPassword,
     getClubNodeData,
+    nodeData,
   };
 };
 
