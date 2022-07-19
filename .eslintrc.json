@@ -27,6 +27,7 @@
     "no-shadow": "off",
     "import/extensions": "off",
     "import/order": "off",
+    "import/no-unresolved": "off",
     "import/no-mutable-exports": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
