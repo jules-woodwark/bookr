@@ -57,9 +57,9 @@ const useFirebase = () => {
     }
   };
 
-  const getClubNodeData = (nodeName, clubName = 'grace') => {
+  const getNodeData = (clubName = 'grace', ...nodes) => {
     setIsLoading(true);
-    const clubNodeRef = ref(database, `clubs/${clubName}/${nodeName}`);
+    const clubNodeRef = ref(database, `clubs/${clubName}/${nodes.join('/')}`);
 
     onValue(clubNodeRef, (snapshot) => {
       const data = snapshot.val();
@@ -136,7 +136,7 @@ const useFirebase = () => {
     getUserInfo,
     updateProfile,
     setNewPassword,
-    getClubNodeData,
+    getNodeData,
     nodeData,
   };
 };

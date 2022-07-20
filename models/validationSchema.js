@@ -1,7 +1,10 @@
 import { object, string } from 'yup';
 
 const InputSchema = {
-  email: string().email('Email is invalid').required('An email is required!'),
+  email: string()
+    .email('Email is invalid')
+    .matches(/and.digital/)
+    .required('An email is required!'),
   password: string().required('A password is required!'),
   firstName: string()
     .min(1, 'First Name is too short!')

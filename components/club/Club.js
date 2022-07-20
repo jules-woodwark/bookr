@@ -6,10 +6,10 @@ import ClubTitle from './ClubTitle';
 import useFirebase from '../../hooks/useFirebase';
 
 export default function Club() {
-  const { getClubNodeData, nodeData, isLoading } = useFirebase();
+  const { getNodeData, nodeData, isLoading } = useFirebase();
 
   useEffect(() => {
-    getClubNodeData('details', 'grace');
+    getNodeData('grace', 'details');
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
