@@ -1,14 +1,13 @@
-import Club from '../components/club/Club';
-// import UserBookings from '../components/userBookings/UserBookings';
+import Club from 'components/club/Club';
+import GridLayout from 'components/common/GridLayout';
 import DeskBooking from '../components/deskBookings/DeskBooking';
 
 export default function Bookings() {
   return (
-    <>
-      <div>
-        <Club />
-      </div>
-      <DeskBooking />
-    </>
+    <GridLayout
+      gridItem1={<Club />}
+      gridItem2={<Club />}
+      gridItem3={<DeskBooking />}
+    />
   );
 }
