@@ -59,7 +59,7 @@ const useFirebase = () => {
 
   const getNodeData = (...nodes) => {
     setIsLoading(true);
-    const clubNodeRef = ref( database, nodes.join('/') );
+    const clubNodeRef = ref(database, nodes.join('/'));
 
     onValue(clubNodeRef, (snapshot) => {
       const data = snapshot.val();
