@@ -15,10 +15,17 @@ export default function UserBookings() {
   const { user } = authCtx;
   console.log(authCtx);
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   user && getNodeData('users', user.uid);
   //   console.log(nodeData);
   // }, [user]);
+=======
+  useEffect(() => {
+    user && getNodeData('users', user.uid);
+    console.log(nodeData);
+  }, [user]);
+>>>>>>> a7f51c7 (half done)
 
   // const rowMap = nodeData.map((node) => {
   //   return (
