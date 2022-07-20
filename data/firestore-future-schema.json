@@ -1,0 +1,104 @@
+{
+  "clubs": {
+    "grace": {
+      "details": {
+        "address": {
+          "building": "WeWork",
+          "city": "Edinburgh",
+          "postCode": "EH23BU",
+          "street": "80 George Street"
+        },
+        "assets": [
+          "Dog Friendly",
+          "Free Beverages",
+          "Access to Power Sockets",
+          "Access to Monitors",
+          "No Parking",
+          "Bike Storage",
+          "Wheelchair Accessible"
+        ],
+        "title": "Club Grace"
+      },
+      "desks": [
+        { "id": "1" },
+        { "id": "2" },
+        { "id": "3" },
+        { "id": "4" },
+        { "id": "5" },
+        { "id": "6" },
+        { "id": "7" },
+        { "id": "8" },
+        { "id": "9" },
+        { "id": "10" },
+        { "id": "11" },
+        { "id": "12" },
+        { "id": "13" },
+        { "id": "14" },
+        { "id": "15" },
+        { "id": "16" },
+        { "id": "17" },
+        { "id": "18" },
+        { "id": "19" },
+        { "id": "20" },
+        { "id": "21" },
+        { "id": "22" }
+      ],
+      "bookings": {
+        "2022-07-20": {
+          "1": "kieran",
+          "2": "jules",
+          "3": "sarah"
+        },
+        "2022-07-21": {
+          "1": "kieran",
+          "2": "sarah",
+          "3": "jules"
+        },
+        "2022-07-23": {
+          "4": "kieran"
+        },
+        "2022-07-24": {
+          "4": "kieran"
+        }
+      }
+    }
+  },
+  "users": {
+    "kieran": {
+      "bookings": {
+        "2022-07-20": {
+          "grace": "1"
+        },
+        "2022-07-21": {
+          "grace": "1"
+        },
+        "2022-07-23": {
+          "grace": "5"
+        },
+        "2022-07-24": {
+          "grace": "5"
+        }
+      }
+    },
+    "jules": {
+      "bookings": {
+        "2022-07-20": {
+          "grace": "2"
+        },
+        "2022-07-21": {
+          "grace": "3"
+        }
+      }
+    },
+    "sarah": {
+      "bookings": {
+        "2022-07-20": {
+          "grace": "3"
+        },
+        "2022-07-21": {
+          "grace": "2"
+        }
+      }
+    }
+  }
+}
