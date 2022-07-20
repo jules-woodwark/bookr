@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
 import Footer from './Footer';
 import Header from './Header';
 import Snackbar from '../ui/Snackbar';
@@ -19,6 +20,7 @@ const StyledMain = styled(Box)`
 function Layout({ children }) {
   return (
     <>
+      <CssBaseline />
       <Header />
       <StyledMain component="main">{children}</StyledMain>
       <Footer />

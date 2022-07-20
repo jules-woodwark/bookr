@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import CardWrapper from 'components/ui/CardWrapper';
 import ClubAddress from './ClubAddress';
 import ClubAssets from './ClubAssets';
 import ClubTitle from './ClubTitle';
@@ -19,10 +20,10 @@ export default function Club() {
   const { title, address, assets } = nodeData;
 
   return (
-    <>
+    <CardWrapper>
       <ClubTitle title={title} />
       <ClubAddress address={address} />
       <ClubAssets assets={assets} />
-    </>
+    </CardWrapper>
   );
 }
