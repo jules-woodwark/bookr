@@ -1,28 +1,28 @@
-import { BookingType } from "./Desk"
+import { BookingType } from 'constants/constants';
 
 function handleClick(e) {
-  console.log('clicked');
+  console.log(`clicked ${e}`);
 }
 
 // REFACTOR: Abstract out DeskButton/DeskUserInfo helper functions
-function getBookingInfo( deskBookingInfo ) {
-  const deskBookingType = deskBookingInfo.bookingType
-  const deskUser = deskBookingInfo.deskUser // Null if not booked
+function getBookingInfo(deskBookingInfo) {
+  const deskBookingType = deskBookingInfo.bookingType;
 
-  switch(deskBookingType) {
+  switch (deskBookingType) {
     case BookingType.Available:
-      return 'Available'
+      return 'Available';
     case BookingType.SelfBooked:
-      return 'Unbook'
+      return 'Unbook';
     case BookingType.OtherBooked:
-      return 'Unavailable'
+      return 'Unavailable';
     default:
       // TODO: error handling
-      return `Unknown BookingType: ${deskBookingType}`
+      return `Unknown BookingType: ${deskBookingType}`;
   }
-
 }
 
 export default function DeskButton({ deskBookingInfo }) {
-  return <button onClick={handleClick}>{ getBookingInfo(deskBookingInfo) }</button>;
+  return (
+    <button onClick={handleClick}>{getBookingInfo(deskBookingInfo)}</button>
+  );
 }

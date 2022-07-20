@@ -3,78 +3,67 @@ import useFirebase from 'hooks/useFirebase';
 import DeskTitle from './DeskTitle';
 import DeskButton from './DeskButton';
 import DeskUserInfo from './DeskUserInfo';
-
-export const BookingType = {
-  Available: 'Available',
-  SelfBooked: 'SelfBooked',
-  OtherBooked: 'OtherBooked'
-};
+import { BookingType } from 'constants/constants';
 
 function getDeskBookingInfo(deskID, bookingData) {
-  const user = 'kieran' // DEBUG
-  console.log(bookingData)
+  const user = 'kieran'; // DEBUG
 
-  let deskBookingType, deskUser
+  let deskBookingType;
+  let deskUser;
 
   if (bookingData) {
-    deskUser = bookingData[deskID]
+    deskUser = bookingData[deskID];
 
-    switch(deskUser) {
+    switch (deskUser) {
       case user:
-        deskBookingType = BookingType.SelfBooked
-        break
+        deskBookingType = BookingType.SelfBooked;
+        break;
       case undefined:
         // _This_ table hasn't been booked today
-        deskBookingType = BookingType.Available
+        deskBookingType = BookingType.Available;
         // Handle null & undefined users the same way
-        deskUser = null
-        break
+        deskUser = null;
+        break;
       default:
-        deskBookingType = BookingType.OtherBooked
+        deskBookingType = BookingType.OtherBooked;
     }
   } else {
     // _No_ tables booked today
-    deskBookingType = BookingType.Available
+    deskBookingType = BookingType.Available;
   }
 
-  console.log(deskUser)
   return {
-          bookingType: deskBookingType,
-          deskUser: deskUser
-        }
+    bookingType: deskBookingType,
+    deskUser,
+  };
 }
 
-
 export default function Desk({ selectedDate, deskID }) {
-  const { getClubNodeData, nodeData, isLoading } = useFirebase()
-  let deskBookingInfo, bookingData
+  const { getClubNodeData, nodeData, isLoading } = useFirebase();
+  let bookingData;
 
   useEffect(() => {
-      getClubNodeData('grace', 'bookings', selectedDate);
+    getClubNodeData('grace', 'bookings', selectedDate);
   }, [selectedDate]);
 
   if (isLoading) return <p>Loading...</p>;
   if (nodeData === null) {
     // No bookings at all on this day (so far), so certain keys don't exist in firestore. Needs to be handled separately
-    bookingData = {}
-    //return <p>No desk booking details</p>; 
+    bookingData = {};
+    // return <p>No desk booking details</p>;
   } else {
-    bookingData = nodeData
-    //deskBookingInfo = getDeskBookingInfo(deskID, bookingData)
-    //console.log(deskBookingInfo)
+    bookingData = nodeData;
+    // deskBookingInfo = getDeskBookingInfo(deskID, bookingData)
+    // console.log(deskBookingInfo)
   }
 
-  deskBookingInfo = getDeskBookingInfo(deskID, bookingData)
+  const deskBookingInfo = getDeskBookingInfo(deskID, bookingData);
   // BUG: DeskButton/DeskUserInfo are receiving `undefined` deskBookingInfo
   return (
     <>
       <DeskTitle deskID={deskID} />
-      <DeskButton
-        deskBookingInfo={deskBookingInfo}
-      />
-      <DeskUserInfo
-        deskBookingInfo={deskBookingInfo}
-      />
+      <DeskButton deskBookingInfo={deskBookingInfo} />
+      <DeskUserInfo deskBookingInfo={deskBookingInfo} />
     </>
   );
 }

@@ -7,7 +7,6 @@ export default function Bookings() {
     <>
       <div>
         <Club />
-
       </div>
       <DeskBooking />
     </>

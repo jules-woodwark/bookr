@@ -1,16 +1,16 @@
+/* eslint react/jsx-no-bind: 0 */
 import { useState } from 'react';
 import DeskBookingTitle from './DeskBookingTitle';
 import DatePicker from './DatePicker';
 import DeskList from './DeskList';
 
 export default function DeskBooking() {
-  let [selectedDate, setDate] = useState(0)
+  const [selectedDate, setDate] = useState(0);
 
   function handleDatePick(input) {
     // TODO: Check this is locale-agnostic
     // silly americans and their month/hour/year/day/second logic
-    console.log(input.target.value)
-    setDate(input.target.value)
+    setDate(input.target.value);
   }
 
   return (
