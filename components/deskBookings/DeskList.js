@@ -6,7 +6,7 @@ export default function DeskList({ selectedDate }) {
   const { getNodeData, nodeData, isLoading } = useFirebase();
 
   useEffect(() => {
-    getNodeData('grace', 'desks');
+    getNodeData('clubs', 'grace', 'desks');
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
