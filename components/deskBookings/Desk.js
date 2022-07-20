@@ -43,7 +43,7 @@ export default function Desk({ selectedDate, deskID }) {
   let bookingData;
 
   useEffect(() => {
-    getNodeData('grace', 'bookings', selectedDate);
+    getNodeData('clubs', 'grace', 'bookings', selectedDate);
   }, [selectedDate]);
 
   if (isLoading) return <p>Loading...</p>;

@@ -9,7 +9,7 @@ export default function Club() {
   const { getNodeData, nodeData, isLoading } = useFirebase();
 
   useEffect(() => {
-    getNodeData('grace', 'details');
+    getNodeData('clubs', 'grace', 'details');
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
