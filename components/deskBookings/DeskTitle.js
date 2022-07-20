@@ -1,3 +1,3 @@
-export default function DeskTitle() {
-  return <h1>Desk Title</h1>;
+export default function DeskTitle({ deskID }) {
+  return <h1>Desk {deskID}</h1>;
 }
