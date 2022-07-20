@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import useFirebase from '../../hooks/useFirebase';
-
 import Button from '@mui/material/Button';
 
 const StyledButton = styled(Button)`
@@ -9,7 +8,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-function LogoutButton() {
+export default function LogoutButton() {
   const { logout } = useFirebase();
 
   const logoutHandler = () => {
@@ -27,5 +26,3 @@ function LogoutButton() {
     </StyledButton>
   );
 }
-
-export default LogoutButton;

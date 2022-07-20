@@ -1,19 +1,20 @@
-import AndLogo from 'components/ui/AndLogo';
-// import BookrLogo from 'components/ui/BookrLogo';
+import { styled } from '@mui/material/styles';
+import BookrLogo from 'components/ui/BookrLogo';
+import Nav from './Nav';
+
+const StyledHeader = styled('header')`
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem;
+  justify-content: space-between;
+`;
 
 export default function Header() {
   return (
-    <header>
-      <h1>Header</h1>
-      <AndLogo />
-      {/* }
-      <br></br>
-      <div style={{ backgroundColor: 'red' }}>
-        <AndLogo reversecolours="true" />
-      </div>}
-      <br></br>
+    <StyledHeader>
       <BookrLogo />
-      */}
-    </header>
+      <Nav />
+    </StyledHeader>
   );
 }
