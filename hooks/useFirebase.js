@@ -57,7 +57,7 @@ const useFirebase = () => {
     }
   };
 
-  const getClubNodeData = (clubName = 'grace', ...nodes) => {
+  const getNodeData = (clubName = 'grace', ...nodes) => {
     setIsLoading(true);
     const clubNodeRef = ref(database, `clubs/${clubName}/${nodes.join('/')}`);
 
@@ -136,7 +136,7 @@ const useFirebase = () => {
     getUserInfo,
     updateProfile,
     setNewPassword,
-    getClubNodeData,
+    getNodeData,
     nodeData,
   };
 };

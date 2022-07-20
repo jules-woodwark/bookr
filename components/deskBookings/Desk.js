@@ -39,11 +39,11 @@ function getDeskBookingInfo(deskID, bookingData) {
 }
 
 export default function Desk({ selectedDate, deskID }) {
-  const { getClubNodeData, nodeData, isLoading } = useFirebase();
+  const { getNodeData, nodeData, isLoading } = useFirebase();
   let bookingData;
 
   useEffect(() => {
-    getClubNodeData('grace', 'bookings', selectedDate);
+    getNodeData('grace', 'bookings', selectedDate);
   }, [selectedDate]);
 
   if (isLoading) return <p>Loading...</p>;

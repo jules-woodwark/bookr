@@ -3,10 +3,10 @@ import useFirebase from 'hooks/useFirebase';
 import Desk from './Desk';
 
 export default function DeskList({ selectedDate }) {
-  const { getClubNodeData, nodeData, isLoading } = useFirebase();
+  const { getNodeData, nodeData, isLoading } = useFirebase();
 
   useEffect(() => {
-    getClubNodeData('grace', 'desks');
+    getNodeData('grace', 'desks');
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
