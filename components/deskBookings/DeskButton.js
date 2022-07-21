@@ -1,5 +1,31 @@
+import { useCallback } from 'react';
 import { BookingType } from 'constants/constants';
+import { styled } from '@mui/material/styles';
 import useFirebase from 'hooks/useFirebase';
+import Button from '@mui/material/Button';
+
+const StyledDeskButton = styled(Button)`
+  color: white;
+  margin-right: 1rem;
+
+  ${({ bookinginfo }) =>
+    bookinginfo === 'Book' &&
+    `
+    background-color: #497D00;
+  `}
+
+  ${({ bookinginfo }) =>
+    bookinginfo === 'Unbook' &&
+    `
+    background-color: #354e76;
+  `}
+
+  &:hover {
+    background-color: #000000;
+    transform: translateY(-1px);
+    cursor: pointer;
+  }
+`;
 
 // REFACTOR: Abstract out DeskButton/DeskUserInfo helper functions
 function getBookingInfo(deskBookingInfo) {
@@ -25,10 +51,8 @@ export default function DeskButton({ deskBookingInfo }) {
   const { userID, deskID, date } = deskBookingInfo;
   const club = 'grace';
 
-  function handleClick(e) {
-    const intent = e.target.innerHTML;
-
-    switch (intent) {
+  const handleClick = useCallback(() => {
+    switch (bookingInfo) {
       case 'Book':
         bookDesk(userID, date, club, deskID);
         return;
@@ -39,11 +63,15 @@ export default function DeskButton({ deskBookingInfo }) {
         // TODO: error handling
         console.log(`Unknown intent: ${intent}`);
     }
-  }
+  }, [bookDesk, bookingInfo]);
 
   return (
-    <button disabled={bookingInfo === 'Unavailable'} onClick={handleClick}>
+    <StyledDeskButton
+      disabled={bookingInfo === 'Unavailable'}
+      bookinginfo={bookingInfo}
+      onClick={handleClick}
+    >
       {bookingInfo}
-    </button>
+    </StyledDeskButton>
   );
 }

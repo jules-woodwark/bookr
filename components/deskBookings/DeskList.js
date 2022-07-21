@@ -1,6 +1,16 @@
 import { useEffect } from 'react';
+import { styled } from '@mui/material/styles';
 import useFirebase from 'hooks/useFirebase';
 import Desk from './Desk';
+import List from '@mui/material/List';
+
+const StyledListItem = styled('li')`
+  margin: 1rem 1rem;
+`;
+
+const StyledList = styled(List)`
+  columns: 2 auto;
+`;
 
 export default function DeskList({ selectedDate }) {
   const { getNodeData, nodeData, isLoading } = useFirebase();
@@ -16,10 +26,10 @@ export default function DeskList({ selectedDate }) {
   const { ...desks } = nodeData;
 
   const deskMap = Object.values(desks).map((desk) => (
-    <li key={desk.id}>
+    <StyledListItem key={desk.id}>
       <Desk selectedDate={selectedDate} deskID={desk.id} />
-    </li>
+    </StyledListItem>
   ));
 
-  return <ul>{deskMap}</ul>;
+  return <StyledList>{deskMap}</StyledList>;
 }

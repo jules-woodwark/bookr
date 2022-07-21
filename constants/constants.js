@@ -7,17 +7,19 @@ export const BookingType = {
 // DEBUG: NO NO NO, BAD BAD BAD
 // Just for MVP demo, we _really_ need to sort this
 const uidToUsername = {
-  'JDq59mu1QwfrLuqUGwcgkSFHt5u1': 'Kieran Doyle',
+  JDq59mu1QwfrLuqUGwcgkSFHt5u1: 'Kieran Doyle',
   '9EfX6sSkksZ2bpDYPD4Z42mA54F2': 'Jules Woodwark',
-  'Vo5smZoLO8Tlgdo4CorASvoTBGz1': 'Sarah Graham',
+  Vo5smZoLO8Tlgdo4CorASvoTBGz1: 'Sarah Graham',
   '7YCAooLe5fM2SasF02vS4WhDpNk2': 'Mariusz Majak',
-  'W6oYfurDcYP302SXbmodoiubyTj1': 'Alyna Karim',
-  'Q7RVlpxLQdOKBoeh8jx9IhJM1w52': 'Edvardas Vabuolas',
+  W6oYfurDcYP302SXbmodoiubyTj1: 'Alyna Karim',
+  Q7RVlpxLQdOKBoeh8jx9IhJM1w52: 'Edvardas Vabuolas',
 };
 
 export function getUsername(uid) {
   let username = uidToUsername[uid];
-  if (username === undefined) { username = 'Mysterious User'; }
+  if (username === undefined) {
+    username = 'Mysterious User';
+  }
 
   return username;
 }

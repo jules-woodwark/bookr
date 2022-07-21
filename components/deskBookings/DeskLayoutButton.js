@@ -8,6 +8,8 @@ const StyledButton = styled(Button)`
   color: white;
   background-color: #d82036;
   max-height: 3rem;
+  padding: 1rem;
+  font-size: 1em;
 
   &:hover,
   &:focus {
