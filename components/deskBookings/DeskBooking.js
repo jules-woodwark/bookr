@@ -1,17 +1,22 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useContext } from 'react';
 import { styled } from '@mui/material/styles';
+import { UiContext } from 'store';
 import DeskBookingTitle from './DeskBookingTitle';
 import DatePicker from './DatePicker';
 import DeskList from './DeskList';
 import CardWrapper from 'components/ui/CardWrapper';
 import DeskLayoutButton from './DeskLayoutButton';
+import DeskLayout from './DeskLayout';
 
 const StyledDiv = styled('div')`
   display: flex;
+  align-items: center;
 `;
 
 export default function DeskBooking() {
   const [selectedDate, setDate] = useState(0);
+  const uiCtx = useContext(UiContext);
+  const { showDeskLayout } = uiCtx;
 
   const handleDatePick = useCallback((input) => {
     // TODO: Check this is locale-agnostic
@@ -27,6 +32,7 @@ export default function DeskBooking() {
       </StyledDiv>
       <DatePicker handleDatePick={handleDatePick} />
       <DeskList selectedDate={selectedDate} />
+      {showDeskLayout && <DeskLayout />}
     </CardWrapper>
   );
 }
