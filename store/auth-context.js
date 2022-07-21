@@ -19,8 +19,8 @@ export function AuthContextProvider({ children }) {
         setUser({ uid });
         Router.push('/bookings');
       } else {
+        Router.push('/');
         setUser(null);
-        // Router.push('/');
       }
     });
 
