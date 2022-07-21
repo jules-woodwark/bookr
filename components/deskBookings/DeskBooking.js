@@ -16,7 +16,7 @@ const StyledDiv = styled('div')`
 `;
 
 export default function DeskBooking() {
-  const [selectedDate, setDate] = useState(0);
+  const [selectedDate, setDate] = useState();
   const uiCtx = useContext(UiContext);
   const { showDeskLayout } = uiCtx;
 
