@@ -3,8 +3,11 @@ import useFirebase from '../../hooks/useFirebase';
 import Button from '@mui/material/Button';
 
 const StyledButton = styled(Button)`
+  color: white;
+  background-color: #000000;
+
   &:hover {
-    background-color: #4dabf5;
+    background-color: #d82036;
   }
 `;
 
