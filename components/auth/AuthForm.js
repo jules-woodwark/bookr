@@ -15,22 +15,8 @@ import TextField from '@mui/material/TextField';
 import useFirebase from '../../hooks/useFirebase';
 import ValidationSchema from '../../models/validationSchema';
 
-import AndLogo from 'components/ui/AndLogo';
-import BookrLogo from 'components/ui/BookrLogo';
-import style from '@emotion/styled';
-
 const StyledTextField = styled(TextField)`
   margin: 1rem 0;
-`;
-
-const StyledDivAndLogo = style.div`
-  margin: 1rem 0;
-  text-align: center;
-`;
-
-const StyledDivBookrLogo = style.div`
-  margin: 1rem 0;
-  text-align: center;
 `;
 
 function AuthForm() {
@@ -101,12 +87,6 @@ function AuthForm() {
 
   return (
     <Card component="section">
-      <StyledDivAndLogo>
-        <AndLogo />
-      </StyledDivAndLogo>
-      <StyledDivBookrLogo>
-        <BookrLogo />
-      </StyledDivBookrLogo>
       <Form onSubmit={handleSubmit}>
         <Icon
           component={isLogin ? LockOpenIcon : AccountCircle}
@@ -141,9 +121,6 @@ function AuthForm() {
         />
         {!isLoading && (
           <Button
-            style={{
-              backgroundColor: '#ff323c',
-            }}
             type="submit"
             variant="contained"
             size={largeDevice ? 'large' : 'medium'}
@@ -155,9 +132,6 @@ function AuthForm() {
         {isLoading && <CircularProgress />}
         <Divider />
         <Button
-          style={{
-            backgroundColor: '#000000',
-          }}
           variant="contained"
           color="success"
           size={largeDevice ? 'large' : 'medium'}

@@ -4,12 +4,10 @@ export const UiContext = createContext({
   alert: null,
   setAlert: () => {},
   showAlert: () => {},
-  showDeskLayout: () => {},
 });
 
 export function UiContextProvider({ children }) {
   const [alert, setAlert] = useState(null);
-  const [showDeskLayout, setShowDeskLayout] = useState(false);
 
   const showAlert = useCallback(
     (type, message, error) => {
@@ -28,16 +26,10 @@ export function UiContextProvider({ children }) {
     [setAlert]
   );
 
-  const toggleDeskLayout = () => {
-    setShowDeskLayout((prevState) => !prevState);
-  };
-
   const contextValue = useMemo(() => ({
     alert,
     setAlert,
     showAlert,
-    showDeskLayout,
-    toggleDeskLayout,
   }));
 
   return (
