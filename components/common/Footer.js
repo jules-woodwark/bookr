@@ -18,17 +18,3 @@ export default function Footer() {
     </StyledFooter>
   );
 }
-// const arr = [
-//   {
-//     date: '2022-07-20',
-//     bookings: ['1', '21'],
-//   },
-//   {
-//     date: '2022-07-21',
-//     bookings: ['2'],
-//   },
-// ];
-
-// const arr = [
-//   {date: '2022-07-20', desk: 1}, {date: '2022-07-20', desk: 2}, { date: '2022-07-21', desk: 2}
-// ]
