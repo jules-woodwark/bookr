@@ -1,0 +1,120 @@
+{
+  "clubs": {
+    "grace": {
+      "details": {
+        "title": "Club Grace",
+        "address": {
+          "building": "WeWork",
+          "city": "Edinburgh",
+          "postCode": "EH23BU",
+          "street": "80 George Street"
+        },
+        "assets": [
+          "Dog Friendly",
+          "Free Beverages",
+          "Access to Power Sockets",
+          "Access to Monitors",
+          "No Parking",
+          "Bike Storage",
+          "Wheelchair Accessible"
+        ]
+      },
+      "desks": [
+        { "id": "1" },
+        { "id": "2" },
+        { "id": "3" },
+        { "id": "4" },
+        { "id": "5" },
+        { "id": "6" },
+        { "id": "7" },
+        { "id": "8" },
+        { "id": "9" },
+        { "id": "10" },
+        { "id": "11" },
+        { "id": "12" },
+        { "id": "13" },
+        { "id": "14" },
+        { "id": "15" },
+        { "id": "16" },
+        { "id": "17" },
+        { "id": "18" },
+        { "id": "19" },
+        { "id": "20" },
+        { "id": "21" },
+        { "id": "22" }
+      ],
+      "bookings": {
+        "2022-07-21": {
+          "1": "JDq59mu1QwfrLuqUGwcgkSFHt5u1",
+          "2": "9EfX6sSkksZ2bpDYPD4Z42mA54F2",
+          "3": "Vo5smZoLO8Tlgdo4CorASvoTBGz1"
+        },
+        "2022-07-22": {
+          "1": "JDq59mu1QwfrLuqUGwcgkSFHt5u1",
+          "2": "Vo5smZoLO8Tlgdo4CorASvoTBGz1",
+          "3": "9EfX6sSkksZ2bpDYPD4Z42mA54F2"
+        },
+        "2022-07-23": {
+          "4": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+        },
+        "2022-07-24": {
+          "4": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+        }
+      }
+    }
+  },
+  "users": {
+    "JDq59mu1QwfrLuqUGwcgkSFHt5u1": {
+      "bookings": {
+        "2022-07-21": {
+          "grace": {
+            "1": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+          }
+        },
+        "2022-07-22": {
+          "grace": {
+            "1": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+          }
+        },
+        "2022-07-23": {
+          "grace": {
+            "4": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+          }
+        },
+        "2022-07-24": {
+          "grace": {
+            "4": "JDq59mu1QwfrLuqUGwcgkSFHt5u1"
+          }
+        }
+      }
+    },
+    "9EfX6sSkksZ2bpDYPD4Z42mA54F2": {
+      "bookings": {
+        "2022-07-21": {
+          "grace": {
+            "2": "9EfX6sSkksZ2bpDYPD4Z42mA54F2"
+          }
+        },
+        "2022-07-22": {
+          "grace": {
+            "3": "9EfX6sSkksZ2bpDYPD4Z42mA54F2"
+          }
+        }
+      }
+    },
+    "Vo5smZoLO8Tlgdo4CorASvoTBGz1": {
+      "bookings": {
+        "2022-07-21": {
+          "grace": {
+            "3": "Vo5smZoLO8Tlgdo4CorASvoTBGz1"
+          }
+        },
+        "2022-07-22": {
+          "grace": {
+            "2": "Vo5smZoLO8Tlgdo4CorASvoTBGz1"
+          }
+        }
+      }
+    }
+  }
+}

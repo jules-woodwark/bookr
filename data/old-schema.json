@@ -1,0 +1,83 @@
+{
+  "clubs": {
+    "grace": {
+      "details": {
+        "title": "Club Grace",
+        "address": {
+          "building": "WeWork",
+          "city": "Edinburgh",
+          "postCode": "EH23BU",
+          "street": "80 George Street"
+        },
+        "assets": [
+          "Dog Friendly",
+          "Free Beverages",
+          "Access to Power Sockets",
+          "Access to Monitors",
+          "No Parking",
+          "Bike Storage",
+          "Wheelchair Accessible"
+        ]
+      },
+      "desks": [
+        {
+          "id": "1-1"
+        },
+        {
+          "id": "1-2"
+        },
+        {
+          "id": "1-3"
+        },
+        {
+          "id": "1-4"
+        },
+        {
+          "id": "2-1"
+        },
+        {
+          "id": "2-2"
+        },
+        {
+          "id": "2-3"
+        },
+        {
+          "id": "2-4"
+        },
+        {
+          "id": "2-5"
+        },
+        {
+          "id": "2-6"
+        },
+        {
+          "id": "2-7"
+        },
+        {
+          "id": "2-8"
+        },
+        {
+          "id": "3-1"
+        }
+      ],
+      "bookings": {
+        "2022-07-20": {
+          "1-1": "kieran",
+          "1-2": "jules",
+          "1-3": "sarah"
+        },
+        "2022-07-21": {
+          "1-1": "kieran",
+          "1-2": "sarah",
+          "1-3": "jules"
+        },
+        "2022-07-23": {
+          "2-1": "kieran"
+        },
+        "2022-07-24": {
+          "2-1": "kieran"
+        }
+      }
+    }
+  }
+}

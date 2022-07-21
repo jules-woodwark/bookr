@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useMemo } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
+import Router from 'next/router';
 
 export const AuthContext = createContext({
   user: null,
@@ -16,7 +17,9 @@ export function AuthContextProvider({ children }) {
       if (fbUser) {
         const { uid } = fbUser;
         setUser({ uid });
+        Router.push('/bookings');
       } else {
+        Router.push('/');
         setUser(null);
       }
     });

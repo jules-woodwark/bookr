@@ -1,6 +1,9 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const themeOptions = {
+  typography: {
+    fontFamily: ['Poppins'],
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -9,9 +12,13 @@ const themeOptions = {
       sx: 400,
       szm: 450,
       sm: 600,
+      xm: 700,
       m: 750,
       md: 900,
-      lg: 1200,
+      laptop: 1024,
+      laptopM: 1200,
+      laptopL: 1440,
+      lg: 1225,
       xl: 1536,
     },
   },
