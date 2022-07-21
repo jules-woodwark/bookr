@@ -1,5 +1,28 @@
-export default function DeskLayoutButton() {
-  const handleClick = () => alert('desk layout button clicked');
+import { useContext } from 'react';
+import { UiContext } from 'store';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
-  return <button onClick={handleClick}>See Office Layout</button>;
+const StyledButton = styled(Button)`
+  margin-left: 3rem;
+  color: white;
+  background-color: #d82036;
+  max-height: 3rem;
+
+  &:hover,
+  &:focus {
+    background-color: #000000;
+    transform: translateY(-1px);
+  }
+`;
+
+export default function DeskLayoutButton() {
+  const uiCtx = useContext(UiContext);
+  const { toggleDeskLayout } = uiCtx;
+
+  const handleClick = () => {
+    toggleDeskLayout();
+  };
+
+  return <StyledButton onClick={handleClick}>See Office Layout</StyledButton>;
 }

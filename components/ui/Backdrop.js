@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 
-const StyledBackdrop = styled.div`
+const StyledBackdrop = styled('div')`
   background-color: rgba(0, 0, 0, 0.75);
   height: 100vh;
   left: 0;

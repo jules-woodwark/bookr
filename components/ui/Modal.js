@@ -16,9 +16,9 @@ const SlideDownAnimation = keyframes`
   }
 `;
 
-const StyledModal = styled.aside`
+const StyledModal = styled('aside')`
   animation: ${SlideDownAnimation} 300ms ease-out forwards;
-  background-color: ${(props) => props.theme.modalBackgroundColor};
+  background-color: white;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
