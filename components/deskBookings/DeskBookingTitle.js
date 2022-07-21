@@ -1,3 +1,5 @@
+import { Typography } from '@mui/material';
+
 export default function DeskBookingTitle() {
-  return <h1>Desk ID</h1>;
+  return <Typography variant="h3">Desks</Typography>;
 }

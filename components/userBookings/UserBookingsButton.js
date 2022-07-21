@@ -1,6 +1,18 @@
+import { useCallback } from 'react';
+import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import useFirebase from 'hooks/useFirebase';
-import { useCallback } from 'react';
+
+const StyledButton = styled(Button)`
+  background-color: #354e76;
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: #000000;
+    transform: translateY(-1px);
+  }
+`;
 
 export default function UserBookingsButton({ userID, deskID, date }) {
   const { unbookDesk } = useFirebase();
@@ -10,5 +22,5 @@ export default function UserBookingsButton({ userID, deskID, date }) {
     unbookDesk(userID, date, club, deskID);
   }, []);
 
-  return <Button onClick={handleClick}>Unbook</Button>;
+  return <StyledButton onClick={handleClick}>Unbook</StyledButton>;
 }
