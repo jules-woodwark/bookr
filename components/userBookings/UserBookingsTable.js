@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { AuthContext } from 'store';
+import { v4 as uuidv4 } from 'uuid';
 import useFirebase from 'hooks/useFirebase';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -56,7 +57,7 @@ export default function UserBookings() {
 
   nodeData
     ? (rowMap = normalizeUserBookings(nodeData).map((node) => (
-        <TableRow key={`${node.id}/`}>
+        <TableRow key={uuidv4()}>
           <TableCell>{node.date}</TableCell>
           <TableCell>{node.deskID}</TableCell>
           <TableCell>
