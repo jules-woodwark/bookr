@@ -21,10 +21,6 @@ export default function DatePicker({ handleDatePick }) {
   // so that the initial value is treated the same as all subsequent onChange events
   // Using 'onLoad' would trigger on every re-render instead of just the first
 
-  // const handleChange = () => {
-
-  // }
-
   useEffect(() => handleDatePick({ target: { value: todayString } }), []);
 
   const today = new Date();
@@ -32,7 +28,6 @@ export default function DatePicker({ handleDatePick }) {
   nextMonth.setMonth(today.getMonth() + 1);
 
   const todayString = convertDateToString(today);
-  // const nextMonthString = convertDateToString(nextMonth);
 
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -41,7 +36,6 @@ export default function DatePicker({ handleDatePick }) {
         renderInput={(props) => <TextField {...props} />}
         value={value}
         minDate={moment(today)}
-        // defaultValue={todayString}
         maxDate={moment(nextMonth)}
         onChange={(newValue) => {
           setValue(newValue);
