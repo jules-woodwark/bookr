@@ -68,10 +68,8 @@ const useFirebase = () => {
     });
   };
 
-  const getUserInfo = useCallback(async () => {
-    const { uid } = authCtx.user;
-
-    if (uid) {
+  const getUserInfo = useCallback(
+    async (uid) => {
       const docRef = doc(db, 'users', uid);
 
       try {
@@ -81,10 +79,9 @@ const useFirebase = () => {
       } catch (err) {
         showAlert('error', 'Failed to Load User Data', err);
       }
-    } else {
-      showAlert('error', 'No User ID');
-    }
-  }, [authCtx.user, showAlert]);
+    },
+    [showAlert]
+  );
 
   const updateProfile = async (valuesObj) => {
     const { firstName, lastName, email } = valuesObj;

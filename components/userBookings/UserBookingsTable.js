@@ -7,41 +7,77 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import UserBookingsButton from './UserBookingsButton';
+
+function normalizeUserBookings(inputData) {
+  const outputArr = [];
+
+  if (inputData === null || undefined) {
+    return outputArr;
+  }
+
+  const dates = Object.keys(inputData);
+
+  for (let i = 0; i < dates.length; i++) {
+    const date = dates[i];
+    // for club in clubs
+    const club = 'grace';
+    const innerData = inputData[date][club];
+
+    const deskIDs = Object.keys(innerData);
+
+    for (let j = 0; j < deskIDs.length; j++) {
+      const deskID = deskIDs[j];
+      const bookerID = innerData[deskID];
+      const datum = { date, deskID, bookedBy: bookerID };
+      outputArr.push(datum);
+    }
+  }
+
+  return outputArr;
+}
 
 export default function UserBookings() {
   const authCtx = useContext(AuthContext);
-  const { getNodeData, nodeData } = useFirebase();
+  const { getNodeData, nodeData, isLoading } = useFirebase();
 
   const { user } = authCtx;
-  console.log(authCtx);
+  let rowArr;
+  let rowMap;
 
-<<<<<<< HEAD
-  // useEffect(() => {
-  //   user && getNodeData('users', user.uid);
-  //   console.log(nodeData);
-  // }, [user]);
-=======
   useEffect(() => {
-    user && getNodeData('users', user.uid);
-    console.log(nodeData);
+    user && getNodeData('users', user.uid, 'bookings');
+    nodeData
+      ? (rowArr = normalizeUserBookings(nodeData))
+      : (rowArr = <p>No current bookings</p>);
   }, [user]);
->>>>>>> a7f51c7 (half done)
 
-  // const rowMap = nodeData.map((node) => {
-  //   return (
+  if (isLoading) return <p>Loading...</p>;
 
-  //   );
-  // })
+  nodeData
+    ? (rowMap = normalizeUserBookings(nodeData).map((node) => (
+        <TableRow key={`${node.id}/`}>
+          <TableCell>{node.date}</TableCell>
+          <TableCell>{node.deskID}</TableCell>
+          <TableCell>
+            <UserBookingsButton />
+          </TableCell>
+        </TableRow>
+      )))
+    : rowArr;
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell align="right">Desk</TableCell>
-          <TableCell align="right">Date</TableCell>
-          <TableCell align="right">Actions</TableCell>
-        </TableRow>
-      </TableHead>
-    </Table>
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Date</TableCell>
+            <TableCell>Desk</TableCell>
+            <TableCell>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>{rowMap}</TableBody>
+      </Table>
+    </TableContainer>
   );
 }

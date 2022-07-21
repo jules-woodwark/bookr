@@ -7,7 +7,6 @@ import Snackbar from '../ui/Snackbar';
 
 const StyledMain = styled(Box)`
   align-items: center;
-  ${'' /* background-color: #e1e2e1; */}
   display: flex;
   flex-direction: column;
   height: 100%;

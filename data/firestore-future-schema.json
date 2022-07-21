@@ -64,10 +64,13 @@
     }
   },
   "users": {
-    "kieran": {
+    "uid": {
       "bookings": {
         "2022-07-20": {
-          "grace": "1"
+          "grace": {
+            "deskId": "uid",
+            "deskId": "uid",
+          }
         },
         "2022-07-21": {
           "grace": "1"
