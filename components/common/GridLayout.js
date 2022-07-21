@@ -3,7 +3,7 @@ import { Box, Grid } from '@mui/material';
 
 const StyledDiv = styled.div`
   width: 100%;
-  padding: 0 2rem;ß
+  padding: 0 2rem;
 `;
 
 function GridLayout({ gridItem1, gridItem2, gridItem3 }) {
