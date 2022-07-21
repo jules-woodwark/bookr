@@ -15,7 +15,7 @@ const uidToUsername = {
   'Q7RVlpxLQdOKBoeh8jx9IhJM1w52': 'Edvardas Vabuolas',
 };
 
-export function getUsername(uid) {
+export function getHardcodedUsername(uid) {
   let username = uidToUsername[uid];
   if (username === undefined) { username = 'Mysterious User'; }
 

@@ -5,7 +5,7 @@ import {
   signOut,
   updatePassword,
 } from 'firebase/auth';
-import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, getDocs, updateDoc, collection } from 'firebase/firestore';
 import { ref, onValue, set, update, remove } from 'firebase/database';
 import { db, colRef, auth, database } from '../firebase-config';
 import { AuthContext } from '../store/auth-context';
@@ -160,6 +160,19 @@ const useFirebase = () => {
     [showAlert]
   );
 
+  const getAllUserDocs = useCallback(
+    async () => {
+      const querySnapshot = await getDocs(collection(db, "users"));
+        querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        return doc;
+      });
+      return querySnapshot;
+    },
+    [showAlert]
+  );
+
   const updateProfile = async (valuesObj) => {
     const { firstName, lastName, email } = valuesObj;
     const { uid } = authCtx.user;
@@ -208,6 +221,7 @@ const useFirebase = () => {
     authRequest,
     logout,
     getUserInfo,
+    getAllUserDocs,
     updateProfile,
     setNewPassword,
     getNodeData,
