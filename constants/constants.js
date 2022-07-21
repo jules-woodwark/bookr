@@ -9,8 +9,8 @@ export const BookingType = {
 const uidToUsername = {
   'JDq59mu1QwfrLuqUGwcgkSFHt5u1': 'Kieran Doyle',
   '9EfX6sSkksZ2bpDYPD4Z42mA54F2': 'Jules Woodwark',
-
-}
+  'Vo5smZoLO8Tlgdo4CorASvoTBGz1': 'Sarah Graham',
+};
 
 export function getUsername(uid) {
   let username = uidToUsername[uid];

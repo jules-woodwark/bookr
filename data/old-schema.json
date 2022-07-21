@@ -2,6 +2,7 @@
   "clubs": {
     "grace": {
       "details": {
+        "title": "Club Grace",
         "address": {
           "building": "WeWork",
           "city": "Edinburgh",
@@ -16,8 +17,7 @@
           "No Parking",
           "Bike Storage",
           "Wheelchair Accessible"
-        ],
-        "title": "Club Grace"
+        ]
       },
       "desks": [
         {
