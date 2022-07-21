@@ -11,10 +11,10 @@ function GridLayout({ gridItem1, gridItem2, gridItem3 }) {
     <StyledDiv>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={5}>
+          <Grid item xs={12} lg={5}>
             {gridItem1}
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={12} lg={7}>
             {gridItem2}
           </Grid>
           <Grid item xs={12}>
