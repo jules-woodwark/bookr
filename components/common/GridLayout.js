@@ -3,6 +3,7 @@ import { Box, Grid } from '@mui/material';
 
 const StyledDiv = styled.div`
   width: 100%;
+  padding: 0 2rem;
 `;
 
 function GridLayout({ gridItem1, gridItem2, gridItem3 }) {
@@ -10,10 +11,10 @@ function GridLayout({ gridItem1, gridItem2, gridItem3 }) {
     <StyledDiv>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             {gridItem1}
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             {gridItem2}
           </Grid>
           <Grid item xs={12}>
