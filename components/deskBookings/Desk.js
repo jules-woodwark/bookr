@@ -1,28 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { AuthContext } from 'store';
 import useFirebase from 'hooks/useFirebase';
 import DeskTitle from './DeskTitle';
 import DeskButton from './DeskButton';
 import DeskUserInfo from './DeskUserInfo';
 import { BookingType } from 'constants/constants';
 
-function getDeskBookingInfo(deskID, bookingData) {
-  const user = 'kieran'; // DEBUG
+function getDeskBookingInfo(deskID, bookingData, date) {
+  const authCtx = useContext(AuthContext);
+  const { user } = authCtx;
+  const userID = user.uid;
+  // console.log(user);
 
   let deskBookingType;
-  let deskUser;
+  let deskUserID;
 
   if (bookingData) {
-    deskUser = bookingData[deskID];
+    deskUserID = bookingData[deskID];
 
-    switch (deskUser) {
-      case user:
+    switch (deskUserID) {
+      case userID:
         deskBookingType = BookingType.SelfBooked;
         break;
       case undefined:
         // _This_ table hasn't been booked today
         deskBookingType = BookingType.Available;
         // Handle null & undefined users the same way
-        deskUser = null;
+        deskUserID = null;
         break;
       default:
         deskBookingType = BookingType.OtherBooked;
@@ -32,9 +36,14 @@ function getDeskBookingInfo(deskID, bookingData) {
     deskBookingType = BookingType.Available;
   }
 
+  // TODO: This return is getting cluttered, should be able to pull out _some_ stuff
+  // Or fully commit and also add 'club'?
   return {
+    deskID,
+    deskUserID,
+    date,
+    userID,
     bookingType: deskBookingType,
-    deskUser,
   };
 }
 
@@ -50,15 +59,11 @@ export default function Desk({ selectedDate, deskID }) {
   if (nodeData === null) {
     // No bookings at all on this day (so far), so certain keys don't exist in firestore. Needs to be handled separately
     bookingData = {};
-    // return <p>No desk booking details</p>;
   } else {
     bookingData = nodeData;
-    // deskBookingInfo = getDeskBookingInfo(deskID, bookingData)
-    // console.log(deskBookingInfo)
   }
 
-  const deskBookingInfo = getDeskBookingInfo(deskID, bookingData);
-  // BUG: DeskButton/DeskUserInfo are receiving `undefined` deskBookingInfo
+  const deskBookingInfo = getDeskBookingInfo(deskID, bookingData, selectedDate);
   return (
     <>
       <DeskTitle deskID={deskID} />

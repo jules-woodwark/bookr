@@ -1,8 +1,5 @@
 import { BookingType } from 'constants/constants';
-
-function handleClick(e) {
-  console.log(`clicked ${e}`);
-}
+import useFirebase from 'hooks/useFirebase';
 
 // REFACTOR: Abstract out DeskButton/DeskUserInfo helper functions
 function getBookingInfo(deskBookingInfo) {
@@ -10,7 +7,7 @@ function getBookingInfo(deskBookingInfo) {
 
   switch (deskBookingType) {
     case BookingType.Available:
-      return 'Available';
+      return 'Book';
     case BookingType.SelfBooked:
       return 'Unbook';
     case BookingType.OtherBooked:
@@ -22,7 +19,31 @@ function getBookingInfo(deskBookingInfo) {
 }
 
 export default function DeskButton({ deskBookingInfo }) {
+  const { unbookDesk, bookDesk } = useFirebase();
+
+  const bookingInfo = getBookingInfo(deskBookingInfo);
+  const { userID, deskID, date } = deskBookingInfo;
+  const club = 'grace';
+
+  function handleClick(e) {
+    const intent = e.target.innerHTML;
+
+    switch (intent) {
+      case 'Book':
+        bookDesk(userID, date, club, deskID);
+        return;
+      case 'Unbook':
+        unbookDesk(userID, date, club, deskID);
+        return;
+      default:
+        // TODO: error handling
+        console.log(`Unknown intent: ${intent}`);
+    }
+  }
+
   return (
-    <button onClick={handleClick}>{getBookingInfo(deskBookingInfo)}</button>
+    <button disabled={bookingInfo === 'Unavailable'} onClick={handleClick}>
+      {bookingInfo}
+    </button>
   );
 }

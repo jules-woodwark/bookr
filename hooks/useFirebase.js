@@ -6,7 +6,7 @@ import {
   updatePassword,
 } from 'firebase/auth';
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, set, update, remove } from 'firebase/database';
 import { db, colRef, auth, database } from '../firebase-config';
 import { AuthContext } from '../store/auth-context';
 import { UiContext } from '../store/ui-context';
@@ -59,19 +59,96 @@ const useFirebase = () => {
 
   const getNodeData = (...nodes) => {
     setIsLoading(true);
-    const clubNodeRef = ref(database, nodes.join('/'));
+    const nodeRef = ref(database, nodes.join('/'));
 
-    onValue(clubNodeRef, (snapshot) => {
+    onValue(nodeRef, (snapshot) => {
       const data = snapshot.val();
       setNodeData(data);
       setIsLoading(false);
     });
   };
 
+  const inputNodeData = (data, ...nodes) => {
+    setIsSending(true);
+    const nodeRef = ref(database, nodes.join('/'));
+
+    set(nodeRef, data)
+    .then(() => {
+      console.log('Data saved successfully');
+    })
+    .catch((error) => {
+      console.log('Write failed');
+      console.log(error);
+    });
+    setIsSending(false);
+  };
+
+  const updateNodeData = (data, ...nodes) => {
+    setIsSending(true);
+    const nodeRef = ref(database, nodes.join('/'));
+
+    update(nodeRef, data)
+    .then(() => {
+      console.log('Data saved successfully');
+    })
+    .catch((error) => {
+      console.log('Write failed');
+      console.log(error);
+    });
+    setIsSending(false);
+  };
+
+  const removeNodeData = (...nodes) => {
+    setIsSending(true);
+    const nodeRef = ref(database, nodes.join('/'));
+
+    remove(nodeRef)
+    .then(() => {
+      console.log('Data saved successfully');
+    })
+    .catch((error) => {
+      console.log('Write failed');
+      console.log(error);
+    });
+    setIsSending(false);
+  };
+
+  const bookDesk = (userID, date, club, deskID) => {
+    const clubNodes = ['clubs', club, 'bookings', date];
+    const userNodes = ['users', userID, 'bookings', date, club];
+    const data = { [deskID]: userID };
+
+    // TODO: See if it's possible to combine both of these into 1 API call
+    // So if _either_ fail, then the whole attempt rolls back
+    try {
+      updateNodeData(data, ...clubNodes);
+      updateNodeData(data, ...userNodes);
+      showAlert('success', 'Successfully booked desk!');
+    } catch (err) {
+      showAlert('error', 'Failed to book desk!', err);
+    }
+  };
+
+  // https://firebase.google.com/docs/database/web/read-and-write#delete_data
+  // 'you can use update() to delete multiple children in a single API call'
+  const unbookDesk = (userID, date, club, deskID) => {
+    const clubNodes = ['clubs', club, 'bookings', date];
+    const userNodes = ['users', userID, 'bookings', date, club];
+
+    try {
+      // TODO: Combines these 2 api calls into 1 update
+      // So if _either_ fail, then the whole attempt rolls back
+      removeNodeData(...clubNodes, deskID);
+      removeNodeData(...userNodes, deskID);
+      showAlert('success', 'Successfully unbooked desk!');
+    } catch (err) {
+      showAlert('error', 'Failed to unbook desk!', err);
+    }
+  };
+
   const getUserInfo = useCallback(
     async (uid) => {
       const docRef = doc(db, 'users', uid);
-
       try {
         const userDoc = await getDoc(docRef);
         const userData = userDoc.data();
@@ -134,6 +211,11 @@ const useFirebase = () => {
     updateProfile,
     setNewPassword,
     getNodeData,
+    inputNodeData,
+    updateNodeData,
+    removeNodeData,
+    bookDesk,
+    unbookDesk,
     nodeData,
   };
 };
