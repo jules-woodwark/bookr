@@ -60,7 +60,11 @@ export default function UserBookings() {
           <TableCell>{node.date}</TableCell>
           <TableCell>{node.deskID}</TableCell>
           <TableCell>
-            <UserBookingsButton />
+            <UserBookingsButton
+              date={node.date}
+              deskID={node.deskID}
+              userID={user.uid}
+            />
           </TableCell>
         </TableRow>
       )))
