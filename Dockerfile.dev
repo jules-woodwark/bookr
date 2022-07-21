@@ -1,0 +1,10 @@
+FROM node:18.4.0-alpine3.16 AS builder
+
+COPY . /bookr
+WORKDIR bookr
+
+# Running into self-signing issues with npm packages
+# Netskope VPN is causing problems
+# Not sure how to fix except simply disabling it
+RUN ["npm", "ci"]
+CMD ["npm", "run", "dev"]
