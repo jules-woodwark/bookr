@@ -25,8 +25,7 @@ const StyledTextField = styled(TextField)`
 
 const StyledDivAndLogo = style.div`
   margin: 1rem 0;
-  padding-left: 5px;
-  
+  text-align: center;
 `;
 
 const StyledDivBookrLogo = style.div`
