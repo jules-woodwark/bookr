@@ -15,6 +15,22 @@ const StyledDiv = styled('div')`
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
+  flex-direction: column;
+
+  ${(props) => props.theme.breakpoints.up('xm')} {
+    flex-direction: row;
+  }
+`;
+
+const StyledDatePickerWrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  ${(props) => props.theme.breakpoints.up('xm')} {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
 `;
 
 export default function DeskBooking() {
@@ -40,7 +56,9 @@ export default function DeskBooking() {
         <DeskBookingTitle />
         <DeskLayoutButton />
       </StyledDiv>
-      <DatePicker handleDatePick={handleDatePick} />
+      <StyledDatePickerWrapper>
+        <DatePicker handleDatePick={handleDatePick} />
+      </StyledDatePickerWrapper>
       <DeskList selectedDate={selectedDate} />
       {showDeskLayout && <DeskLayout />}
     </CardWrapper>

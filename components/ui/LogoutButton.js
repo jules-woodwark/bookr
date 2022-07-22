@@ -6,6 +6,10 @@ const StyledButton = styled(Button)`
   color: white;
   background-color: #000000;
 
+  ${(props) => props.theme.breakpoints.up('szm')} {
+    padding: 10px 36px;
+  }
+
   &:hover {
     background-color: #d82036;
   }

@@ -7,12 +7,20 @@ import useFirebase from '../../hooks/useFirebase';
 import Card from '@mui/material/Card';
 
 const StyledWrapper = styled(Card)`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 3rem;
+  align-items: center;
   border-radius: 15px;
   display: flex;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.75rem;
+
+  ${(props) => props.theme.breakpoints.up('szm')} {
+    padding: 1rem 1.5rem;
+  }
+
+  ${(props) => props.theme.breakpoints.up('laptop')} {
+    padding: 2rem 3rem;
+  }
 
   ${(props) => props.theme.breakpoints.up('xm')} {
     flex-direction: row;
