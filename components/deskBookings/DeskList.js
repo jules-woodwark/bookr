@@ -9,7 +9,11 @@ const StyledListItem = styled('li')`
 `;
 
 const StyledList = styled(List)`
-  columns: 2 auto;
+  columns: 1 auto;
+
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    columns: 2 auto;
+  }
 `;
 
 export default function DeskList({ selectedDate }) {

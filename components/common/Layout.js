@@ -11,9 +11,19 @@ const StyledMain = styled(Box)`
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  margin: 0;
+  margin-top: 76px;
   padding: 70px 0;
   max-width: 100%;
+
+  ${(props) => props.theme.breakpoints.up('lg')} {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  ${(props) => props.theme.breakpoints.up('xl')} {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 `;
 
 function Layout({ children }) {

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 const StyledDeskButton = styled(Button)`
   color: white;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 
   ${({ bookinginfo }) =>
     bookinginfo === 'Book' &&
@@ -24,6 +24,10 @@ const StyledDeskButton = styled(Button)`
     background-color: #000000;
     transform: translateY(-1px);
     cursor: pointer;
+  }
+
+  ${(props) => props.theme.breakpoints.up('laptop')} {
+    margin-right: 1rem;
   }
 `;
 
@@ -63,7 +67,7 @@ export default function DeskButton({ deskBookingInfo }) {
         // TODO: error handling
         console.log(`Unknown intent: ${intent}`);
     }
-  }, [bookDesk, bookingInfo]);
+  }, [deskBookingInfo]);
 
   return (
     <StyledDeskButton
