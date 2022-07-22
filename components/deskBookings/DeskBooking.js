@@ -8,6 +8,8 @@ import DeskList from './DeskList';
 import CardWrapper from 'components/ui/CardWrapper';
 import DeskLayoutButton from './DeskLayoutButton';
 import DeskLayout from './DeskLayout';
+import { ref, off } from 'firebase/database';
+import { database } from 'firebase-config';
 
 const StyledDiv = styled('div')`
   display: flex;
@@ -21,6 +23,11 @@ export default function DeskBooking() {
   const { showDeskLayout } = uiCtx;
 
   const handleDatePick = useCallback((input) => {
+    // Remove rtdb listeners
+    const nodes = ['clubs', 'grace', 'bookings', selectedDate];
+    const oldDateListenerRef = ref(database, nodes.join('/'));
+    off(oldDateListenerRef);
+
     // TODO: Check this is locale-agnostic
     // silly americans and their month/hour/year/day/second logic
     const momentObj = moment(input).format('YYYY-MM-DD');

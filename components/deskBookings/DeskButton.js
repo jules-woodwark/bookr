@@ -63,7 +63,7 @@ export default function DeskButton({ deskBookingInfo }) {
         // TODO: error handling
         console.log(`Unknown intent: ${intent}`);
     }
-  }, [bookDesk, bookingInfo]);
+  }, [deskBookingInfo]);
 
   return (
     <StyledDeskButton
