@@ -11,6 +11,7 @@ const themeOptions = {
       sy: 350,
       sx: 400,
       szm: 450,
+      szzm: 515,
       sm: 600,
       xm: 700,
       m: 750,

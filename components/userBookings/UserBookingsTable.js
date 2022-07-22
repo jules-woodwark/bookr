@@ -58,9 +58,9 @@ export default function UserBookings() {
   nodeData
     ? (rowMap = normalizeUserBookings(nodeData).map((node) => (
         <TableRow key={uuidv4()}>
-          <TableCell>{node.date}</TableCell>
-          <TableCell>{node.deskID}</TableCell>
-          <TableCell>
+          <TableCell align="center">{node.date}</TableCell>
+          <TableCell align="center">{node.deskID}</TableCell>
+          <TableCell align="center">
             <UserBookingsButton
               date={node.date}
               deskID={node.deskID}
@@ -76,9 +76,9 @@ export default function UserBookings() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Desk</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell align="center">Date</TableCell>
+            <TableCell align="center">Desk</TableCell>
+            <TableCell align="center">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{rowMap}</TableBody>

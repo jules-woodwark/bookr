@@ -4,12 +4,17 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
 const StyledButton = styled(Button)`
-  margin-left: 3rem;
   color: white;
   background-color: #d82036;
   max-height: 3rem;
   padding: 1rem;
   font-size: 1em;
+  margin-top: 1rem;
+
+  ${(props) => props.theme.breakpoints.up('xm')} {
+    margin-top: 0rem;
+    margin-left: 3rem;
+  }
 
   &:hover,
   &:focus {
